@@ -1,0 +1,55 @@
+@import "../../app/breakpoints/breakpoints.scss";
+@import "../../app/styles/variable";
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid $gray3;
+    background: linear-gradient(to right, $gray1, $black);
+    color: $white;
+    box-shadow: 0px 4px 6px $shadow;
+
+    @include media ("<=Lphone") {
+      justify-content: space-evenly;
+    }
+  
+    .headerLeft {
+      h1 {
+        font-size: 1.125rem;
+        font-weight: 600;
+
+        @include media ("<=Lphone") {
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+      }
+    }
+  
+    .headerRight {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  
+      span {
+        font-size: 0.875rem; 
+      }
+  
+      .dropdownToggle {
+        padding: 0.2rem;
+        background-color: $white;
+        box-shadow: 0px 4px 6px $shadow;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease-in-out;
+  
+        &:hover {
+          background-color: $gray1; // Tailwind: hover:bg-gray-300
+        }
+      }
+    }
+  }
+
+  .active {
+    color: $white; // Active color for the text
+  }
+  

@@ -1,0 +1,14 @@
+@import "../../../app/breakpoints/breakpoints.scss";
+@import "../../../app/styles/variable";
+
+.cardContainer1 {
+    // width: 100%;
+    flex: 1;
+    background-color: $primary;
+    color: $black;
+
+    .cardBtn{
+        background-color: $primary;
+        color: $secondary;
+    }
+}

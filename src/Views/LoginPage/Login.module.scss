@@ -1,0 +1,86 @@
+@import "../../app/breakpoints/breakpoints.scss";
+@import "../../app/styles//variable";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: $gray1;
+  }
+  
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(to top right, $white, $gray8);
+    padding: 40px;
+    box-shadow: 0 4px 15px $shadow;
+    border-radius: 16px;
+
+    @include media('<=Lphone') {
+      padding: 20px
+    }
+
+    @include media('<=phone') {
+      padding: 10px
+    }
+  }
+  
+  .logoWrapper {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    text-align: center;
+    color: $gray1;
+    font-weight: 600;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input {
+    background: $white;
+    border: 2px solid $gray5;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .button {
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: $gray1;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  
+    &:hover {
+      background-color: $white;
+      color: $black;
+      border: 1px solid $gray1;
+    }
+  }
+  
+  .disabledButton {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .loadingWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -1,0 +1,28 @@
+@import "../../app/breakpoints/breakpoints.scss";
+@import "../../app/styles/variable";
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    // background-color: beige;
+    flex-wrap: wrap;
+    span{
+        color: $secondary;
+        text-align: center;
+    }
+
+    .cardContainer {
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+
+        .singleCard{
+            flex: 1;
+        }
+
+        @include media ("<=Lphone"){
+            flex-direction: column;
+        }
+    }
+}

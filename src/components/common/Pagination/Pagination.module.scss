@@ -1,0 +1,60 @@
+.paginationWrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination {
+    display: flex;
+    list-style: none;
+    gap: 0.3rem;
+
+    @include media ("<=Lphone") {
+      margin-top: 20px;
+      position: absolute;
+    }
+  }
+  
+  .pagination li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid $gray8;
+    border-radius: 4px;
+    background-color: $white;
+    transition: all;
+    transition-duration: 300ms;
+
+    &:hover{
+        background-color: $primary;
+        color: $white;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+  }
+  
+  .pagination .active {
+    background-color: $primaryOrange;
+    color: $secondary;
+    border-color: $secondary;
+  }
+  
+  .pagination .previous,
+  .pagination .next {
+    font-weight: bold;
+
+    &:hover {
+        background-color: $white;
+    }
+  }
+  
+  .pagination .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .break {
+    cursor: default;
+    padding: 0.5rem 1rem;
+  }

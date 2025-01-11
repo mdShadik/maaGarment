@@ -1,0 +1,81 @@
+@import "../../../app/breakpoints/breakpoints.scss";
+@import "../../../app/styles/variable";
+.tableWrapper {
+  overflow-x: auto;
+  overflow-y: auto; // Ensure vertical scrolling is allowed
+  max-height: 400px; // Set a max height for the wrapper
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid ;
+}
+
+.tableHeader {
+  background-color: $gray7; // Equivalent to Tailwind: bg-[#bebebe]
+  position: sticky; // Make the header sticky
+  top: -2px; // Stick to the top of the table wrapper
+  z-index: 1; // Ensure it stays above the table rows
+}
+
+.tableHeaderCell {
+  padding: 0.5rem 1rem; // Equivalent to Tailwind: px-4 py-2
+  text-align: left;
+  font-size: 0.875rem; // Equivalent to Tailwind: text-sm
+  font-weight: 500; // Equivalent to Tailwind: font-medium
+  color: $gray3; // Equivalent to Tailwind: text-gray-600
+  border: 1px solid $gray8;
+  background-color: inherit; // Ensure the background color is inherited
+}
+
+.tableCell {
+  padding: 0.5rem 1rem; // Equivalent to Tailwind: px-4 py-2
+  font-size: 0.875rem; // Equivalent to Tailwind: text-sm
+  color: $secondary; // Equivalent to Tailwind: text-gray-700
+  border: 1px solid $gray8;
+}
+
+.rowEven {
+  background-color: $white; // Equivalent to Tailwind: bg-white
+}
+
+.rowOdd {
+  background-color: $gray8; // Equivalent to Tailwind: bg-gray-50
+}
+  
+  .noDataCell {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem; // Equivalent to Tailwind: text-sm
+    color: $gray3; // Equivalent to Tailwind: text-gray-500
+    border-top: 1px solid $gray5; // Equivalent to Tailwind: border-gray-300
+  }
+  
+  .loadingSkeleton {
+    background-color: $gray8; // Equivalent to Tailwind: bg-[#bebebe]
+    height: 1.5rem; // Equivalent to Tailwind: h-6
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+  
+
+  .tableContainer{
+    
+
+    @include media('<=Lphone') {
+      max-width: 300px;
+      max-height: 400px;
+    }
+  }

@@ -1,0 +1,101 @@
+@import "../../app/breakpoints/breakpoints.scss";
+@import "../../app/styles/variable";
+
+.sidebar {
+    background: linear-gradient(to bottom, $gray1, $black);
+    color: $white;
+    width: 16rem; // 64 in Tailwind units
+    min-height: 100vh;
+    display: flex;
+    z-index: 1000;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+    
+    @include media ("<=Lphone") {
+      position: absolute;
+    }
+  
+    &.collapsed {
+      width: 4rem;
+    }
+  
+    .header {
+      padding: 1rem;
+      font-size: 1.125rem;
+      font-weight: bold;
+      border-bottom: 1px solid $gray1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .toggleButton {
+        background: none;
+        border: none;
+        color: $white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+    }
+  
+    .headerText {
+      display: block;
+    }
+  
+    .nav {
+      margin-top: 1rem;
+      flex-grow: 1;
+  
+      .navList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          .navItem {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s;
+  
+            svg {
+              font-size: 1.5rem;
+              margin-right: 0.5rem;
+            }
+  
+            &:hover {
+              background-color: $black;
+            }
+          }
+        }
+      }
+    }
+  
+    .active {
+      background-color: $gray8;
+      color: $white;
+    }
+  }
+  
+  // Responsiveness for smaller screens
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      &.collapsed {
+        width: 3.5rem; // Adjust for smaller screens
+      }
+  
+      .navItem {
+        padding: 0rem 0rem;
+      }
+    }
+  }
+  
+
+  .collaspedIcon {
+    @include media ("<=Lphone"){
+      font-size: 0.5rem;
+    }
+  }

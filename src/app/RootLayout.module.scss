@@ -1,0 +1,55 @@
+@import "./breakpoints/breakpoints.scss";
+@import "./styles/variable";
+
+.adminLayout {
+  display: flex;
+  height: 100vh; 
+
+  & > :first-child {
+      flex-shrink: 0; 
+      height: 100vh;
+  }
+}
+
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto; 
+  overflow-x: auto; 
+
+  &::-webkit-scrollbar {
+      width: 12px; 
+  }
+
+  &::-webkit-scrollbar-track {
+      background: $white1; 
+      border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background: $gray8;  
+      border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+      background: $gray5;   
+  }
+ 
+  scrollbar-width: thin; 
+  scrollbar-color: $primary white2; 
+
+  @include media("<=Lphone") {
+    margin-left: 3rem; 
+}
+}
+.mainContent {
+  flex-grow: 1;
+  background: $gray3;
+  padding: 1rem;
+
+  @include media("<Lphone"){
+    padding: 0;
+  }
+}
+  
