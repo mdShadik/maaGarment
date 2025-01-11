@@ -27,13 +27,12 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (values: LoginFormValues) => {
     const response = await loginUser(values.email, values.password);
-    const { userId, token, success } = response;
-    if (success) {
+    const { token } = response;
+    if (token) {
       toast.success("Successfully Logged in");
       dispatch(
         setAuthState({
           isAuthenticated: true,
-          userId: userId,
           token: token,
         })
       );
