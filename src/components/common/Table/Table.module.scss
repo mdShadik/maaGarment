@@ -33,22 +33,22 @@
   padding: 0.5rem 1rem; // Equivalent to Tailwind: px-4 py-2
   font-size: 0.875rem; // Equivalent to Tailwind: text-sm
   color: $secondary; // Equivalent to Tailwind: text-gray-700
-  border: 1px solid $gray8;
+  border: 1px solid $white1;
 }
 
 .rowEven {
-  background-color: $white; // Equivalent to Tailwind: bg-white
+  background-color: $white1; // Equivalent to Tailwind: bg-white
 }
 
 .rowOdd {
-  background-color: $gray8; // Equivalent to Tailwind: bg-gray-50
+  background-color: $gray3; // Equivalent to Tailwind: bg-gray-50
 }
   
   .noDataCell {
     text-align: center;
     padding: 1rem;
     font-size: 0.875rem; // Equivalent to Tailwind: text-sm
-    color: $gray3; // Equivalent to Tailwind: text-gray-500
+    color: $black; // Equivalent to Tailwind: text-gray-500
     border-top: 1px solid $gray5; // Equivalent to Tailwind: border-gray-300
   }
   
@@ -72,7 +72,6 @@
   
 
   .tableContainer{
-    
 
     @include media('<=Lphone') {
       max-width: 300px;

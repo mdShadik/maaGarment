@@ -3,6 +3,7 @@ import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistReducer } from "redux-persist";
 import { authReducer } from "@/store/authSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import { groupReducer } from "./groupSlice";
 
 const createNoopStorage = () => {
   return {
@@ -33,6 +34,7 @@ const persistedReducer = persistReducer(authPersistConfig, authReducer);
 
 const rootReducer = combineReducers({
   auth: persistedReducer,
+  group: groupReducer,
 });
 
 export const store = configureStore({

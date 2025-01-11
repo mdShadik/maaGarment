@@ -11,7 +11,7 @@ interface TableColumn {
 interface TableProps {
   columns: TableColumn[];
   data: Record<string, any>[];
-  loading: Boolean | null;
+  loading?: Boolean | null;
 }
 
 const Table: React.FC<TableProps> = ({

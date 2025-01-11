@@ -1,0 +1,44 @@
+@import "../../../app/styles/variable";
+@import "../../../app/breakpoints/breakpoints.scss";
+
+.primaryBtn {
+    border: 1px solid $white;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    background-color: $gray1;
+    color: $white1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    // flex: 1 0 45%;  // Flex will take up 45% of the container (2 buttons per row)
+
+    &:hover {
+      background-color: $white;
+      color: $gray1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $gray5;
+    }
+  }
+
+  .secondaryBtn {
+    border: 1px solid $gray1;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: $gray1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    // flex: 1 0 45%;  // Flex will take up 45% of the container (2 buttons per row)
+
+    &:hover {
+      border: 1px solid $gray8;
+      color: $black;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $gray5;
+    }
+  }

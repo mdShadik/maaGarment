@@ -4,12 +4,7 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./Sidebar.module.scss";
 import Link from "next/link";
-import { pageEndPoints } from "@/utils/constants/appConstants";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
-import { TbScanEye } from "react-icons/tb";
-import { BiSpreadsheet } from "react-icons/bi";
-import { IoAnalyticsSharp } from "react-icons/io5";
 import { navLink } from "../NavLink";
 
 
