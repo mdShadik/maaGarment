@@ -7,8 +7,6 @@ import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navLink } from "../NavLink";
 
-
-
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
@@ -22,31 +20,45 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.collapsed}`}>
+    <aside
+      className={`${styles.sidebar} ${
+        isSidebarOpen ? styles.open : styles.collapsed
+      }`}
+    >
       <div className={styles.header}>
-        {isSidebarOpen && <span className={styles.headerText}>Admin Panel</span>}
+        {isSidebarOpen && (
+          <span className={styles.headerText}>Admin Panel</span>
+        )}
         <button onClick={toggleSidebar} className={styles.toggleButton}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          {navLink.map((nav)=> {
+          {navLink.map((nav) => {
             const Icon = nav.icon;
             return (
               <li key={nav.name}>
-                <Link href={nav.pageUrl} className={`${styles.navItem} ${getActiveClass(nav.pageUrl)}`}>
+                <Link
+                  href={nav.pageUrl}
+                  className={`${styles.navItem} ${getActiveClass(nav.pageUrl)}`}
+                  onClick={() => {
+                    setIsSidebarOpen(false);
+                  }}
+                >
                   {isSidebarOpen ? (
-                  <>
-                    <Icon />
-                    {nav.name}
-                  </>
-                    ) : <div className={styles.collapsedIcon}>
+                    <>
                       <Icon />
-                    </div>}
+                      {nav.name}
+                    </>
+                  ) : (
+                    <div className={styles.collapsedIcon}>
+                      <Icon />
+                    </div>
+                  )}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       </nav>
