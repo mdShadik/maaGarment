@@ -7,7 +7,8 @@
   gap: 10px;
 
   h1{
-    font-weight: 700;
+    font-weight: 7
+    00;
   }
 }
 
@@ -51,4 +52,18 @@
     cursor: not-allowed;
     background-color: $gray7;
   }
+}
+
+.statusActive,
+.statusInActive {
+  background: $success2;
+  padding: 5px;
+  color: $gray1;
+  text-transform: capitalize;
+  border-radius: 5px;
+  box-shadow: 1px 3px 3px $shadow;
+}
+
+.statusInActive {
+  background: $danger2;
 }

@@ -55,7 +55,6 @@ export const getAllGroup = createAsyncThunk(
       { rejectWithValue }
     ) => {
       try {
-        console.log(id, "slice")
         const response = await getGroupByIdApi(id)
   
         if (!response) {

@@ -5,6 +5,7 @@ export const pageEndPoints = {
     groups: '/group',
     addGroups: '/group/add-groups',
     viewGroups: '/group/view-groups',
+    viewUser: '/users/view-user',
 }
 
 export const apiEndPoints = {

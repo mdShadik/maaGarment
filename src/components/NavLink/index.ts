@@ -25,11 +25,6 @@ export const navLink = [
 ];
 
 export const getPageTitle = (pathname: string, params: any) => {
-    // if(pathname.includes(pageEndPoints.viewGroups) && params && params?.id){
-    //     console.log(params?.id, "nav")
-    //     store.dispatch(getGroupById(params?.id))
-    // }
-    // console.log(store.getState())
     const additionalRoutes = {
       [pageEndPoints.addGroups]: "Add Group",
       [pageEndPoints.viewGroups]: "View Group",

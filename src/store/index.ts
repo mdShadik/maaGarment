@@ -4,6 +4,7 @@ import { persistReducer } from "redux-persist";
 import { authReducer } from "@/store/authSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { groupReducer } from "./groupSlice";
+import { userReducer } from "./userSlice";
 
 const createNoopStorage = () => {
   return {
@@ -35,6 +36,7 @@ const persistedReducer = persistReducer(authPersistConfig, authReducer);
 const rootReducer = combineReducers({
   auth: persistedReducer,
   group: groupReducer,
+  user: userReducer,
 });
 
 export const store = configureStore({

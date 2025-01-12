@@ -12,6 +12,7 @@ import styles from "./Table.module.scss";
 interface TableColumn {
   key: string;
   label: string;
+  render?: (rowData: Record<string, any>) => React.ReactNode; // Add render property
 }
 
 interface TableProps {
@@ -51,7 +52,7 @@ const Table: React.FC<TableProps> = ({ columns, data, loading, onRowClick }) => 
             >
               {columns.map((column) => (
                 <CTableDataCell key={column.key}>
-                  {row[column.key]}
+                  {column.render ? column.render(row) : row[column.key]}
                 </CTableDataCell>
               ))}
             </CTableRow>
