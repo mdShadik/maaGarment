@@ -1,72 +1,70 @@
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
+import React from "react";
+import {
+  CTable,
+  CTableHead,
+  CTableRow,
+  CTableHeaderCell,
+  CTableBody,
+  CTableDataCell,
+} from "@coreui/react";
 import styles from "./Table.module.scss";
 
 interface TableColumn {
   key: string;
   label: string;
-  render?: Function;
 }
 
 interface TableProps {
   columns: TableColumn[];
   data: Record<string, any>[];
-  loading?: Boolean | null;
+  loading?: boolean;
+  onRowClick?: (rowData: Record<string, any>) => void;
 }
 
-const Table: React.FC<TableProps> = ({
-  columns,
-  data,
-  loading,
-}) => {
+const Table: React.FC<TableProps> = ({ columns, data, loading, onRowClick }) => {
   return (
-    <div className={styles.tableWrapper}>
-      <div className={styles.tableContainer}>
-        <table className={styles.table}>
-          <thead className={styles.tableHeader}>
-            <tr>
+    <CTable hover striped bordered responsive className={styles.table}>
+      <CTableHead className={styles.tableHeader}>
+        <CTableRow>
+          {columns.map((column) => (
+            <CTableHeaderCell key={column.key}>{column.label}</CTableHeaderCell>
+          ))}
+        </CTableRow>
+      </CTableHead>
+      <CTableBody>
+        {loading ? (
+          Array.from({ length: 10 }).map((_, rowIndex) => (
+            <CTableRow key={rowIndex} className={styles.loadingRow}>
               {columns.map((column) => (
-                <th key={column.key} className={styles.tableHeaderCell}>
-                  {column.label}
-                </th>
+                <CTableDataCell key={column.key}>
+                  <div className={styles.loadingSkeleton}></div>
+                </CTableDataCell>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? (
-              Array.from({ length: 10 }).map((_, index) => (
-                <tr key={index}>
-                  {columns.map((column) => (
-                    <td key={column.key} className={styles.tableCell}>
-                      <div className={styles.loadingSkeleton}></div>
-                    </td>
-                  ))}
-                </tr>
-              ))
-            ) : data?.length > 0 ? (
-              data.map((row, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  className={rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd}
-                >
-                  {columns.map((column) => (
-                    <td key={column.key} className={styles.tableCell}>
-                      {column.render ? column.render(row) : row[column.key]}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={columns.length} className={styles.noDataCell}>
-                  No data available
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
+            </CTableRow>
+          ))
+        ) : data?.length > 0 ? (
+          data.map((row, rowIndex) => (
+            <CTableRow
+              key={rowIndex}
+              className={styles.clickableRow}
+              onClick={() => onRowClick && onRowClick(row)}
+            >
+              {columns.map((column) => (
+                <CTableDataCell key={column.key}>
+                  {row[column.key]}
+                </CTableDataCell>
+              ))}
+            </CTableRow>
+          ))
+        ) : (
+          <CTableRow>
+            <CTableDataCell colSpan={columns.length} className="text-center">
+              No data available
+            </CTableDataCell>
+          </CTableRow>
+        )}
+      </CTableBody>
+    </CTable>
   );
 };
 

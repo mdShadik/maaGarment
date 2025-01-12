@@ -1,0 +1,170 @@
+@import "../../app/breakpoints/breakpoints.scss";
+@import "../../app/styles/variable";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h1 {
+    font-weight: 700;
+    text-align: center;
+
+    @include media("<=Lphone") {
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+}
+
+.mainContent {
+  background-color: $white;
+  min-height: 70vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 5px 50px 10px $shadow;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .detailsSection {
+      display: flex;
+      gap: 20px;
+
+      @include media("<=Lphone") {
+        flex-direction: column;
+      }
+    }
+
+    .membersSection {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .membersSection {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+
+        .memberHeader {
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: $primary;
+          background: red !important;
+        }
+
+        .memberInfo {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+          border-top: 1px solid $gray3;
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+  }
+}
+
+.backBtnContainer {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 5px 50px 10px $shadow;
+  background: $white;
+  margin-bottom: 20px;
+
+  .backBtn {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: none;
+  }
+  .editBtn {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: none;
+    background-color: $gray1;
+    color: $white1;
+  }
+  .saveBtn {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: none;
+  }
+}
+
+.removeBtn {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: none;
+  color: $white;
+  background-color: $primary;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  height: 100%;
+  min-height: 60vh;
+}
+
+.statusActive,
+.statusInActive {
+  background: $success;
+  padding: 5px;
+  color: $white1;
+  text-transform: capitalize;
+  border-radius: 5px;
+  box-shadow: 1px 3px 3px $shadow;
+}
+
+.statusInActive {
+  background: $danger;
+}
+
+.memberBody {
+  display: flex !important;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid $gray3;
+
+  @include media("<=Lphone") {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.saveBthContainer {
+  display: flex;
+  gap: 5px;
+}

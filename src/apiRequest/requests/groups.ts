@@ -1,4 +1,4 @@
-import { addGroup as addGroupApi, getAllGroup as getAllGroupApi } from "../apiMethods/groups";
+import { addGroup as addGroupApi, getAllGroup as getAllGroupApi, getGroupbyIdApi } from "../apiMethods/groups";
 
 export const addGroups = async (name: string, shortName: string) => {
     const payload = {
@@ -17,6 +17,17 @@ export const addGroups = async (name: string, shortName: string) => {
   export const getAllGroups = async (query?: any) => {
     try {
       const response = await getAllGroupApi(query);
+      return response
+    } catch (error: any) {
+      console.error("Error Fetching Group", error?.response?.data);
+      return error?.response?.data;
+    }
+  };
+
+
+  export const getGroupById = async (id: any) => {
+    try {
+      const response = await getGroupbyIdApi(id);
       return response
     } catch (error: any) {
       console.error("Error Fetching Group", error?.response?.data);

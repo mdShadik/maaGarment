@@ -19,13 +19,17 @@ const UserGroups = () => {
     { key: "shortName", label: "Short Name" },
   ];
 
+  const handleRowClick = (rowData: Record<string, any>) => {
+    router.push(`${pageEndPoints.viewGroups}/${rowData?.id}`)
+  };
+
   useEffect(() => {
     dispatch(getAllGroup({}))
   }, [])
 
   return (
     <div className={styles.container}>
-      <h1>User Group Management Dashboard</h1>
+      <h1>Group Management Dashboard</h1>
       <div className={styles.mainContent}>
         <div className={`${styles.content}`}>
           <div className={styles.filters}>
@@ -33,14 +37,14 @@ const UserGroups = () => {
             <button
               className={`${styles["primary-btn"]}`}
               onClick={() =>{
-                router.push(pageEndPoints.addGroups)
+                router.push(`${pageEndPoints.addGroups}`)
               }}
             >
               Add User Group
             </button>
           </div>
           <div>
-            <Table columns={columns} data={info?.data} loading={loading} />
+            <Table columns={columns} data={info?.data} onRowClick={handleRowClick} loading={loading} />
           </div>
         </div>
       </div>

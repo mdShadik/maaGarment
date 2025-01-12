@@ -1,38 +1,52 @@
 @import "../../../app/breakpoints/breakpoints.scss";
 @import "../../../app/styles/variable";
-.inputContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem; // Equivalent to Tailwind: gap-1
-  }
-  
-  .input {
-    max-width: 300px; // Fixed width
-    width: 300px; // Fixed width
-    height: 40px; // Fixed height
-    padding: 0.5rem; // Equivalent to Tailwind: p-2
-    color: $secondary; // Tailwind: text-blue-950
-    background-color: $gray7; // Tailwind: bg-[#bebebe]
-    border-radius: 0.375rem; // Tailwind: rounded-md
-    box-shadow: 0px 4px 6px $shadow; // Tailwind: shadow-lg
-    outline: none;
-    transition: all 0.2s ease-in-out; // Tailwind: transition-all duration-200
 
-    @include media ("<=Lphone"){
-      width: 250px;
-    }
-  
-    &:hover {
-      border-color: $primaryOrange; // Tailwind: hover:border-[#4f7b51]
-    }
-  
-    &.error {
-      border: 1px solid $primary; // Tailwind: border-red-500
-    }
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; // Equivalent to Tailwind: gap-1
+  outline: none;
+}
+
+.readOnlyMode {
+  max-width: 300px;
+  width: 300px;
+  height: 40px;
+  transition: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+.input {
+  max-width: 300px;
+  width: 300px;
+  height: 40px;
+  transition: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  border: 1px solid $secondary !important;
+  box-shadow: 1px 4px 10px $shadow;
+  outline: none !important;
+
+
+
+  &:hover {
+    border: 1px solid $primary !important;
   }
-  
-  .errorText {
-    color: $primaryOrange; // Tailwind: text-red-500
-    font-size: 0.875rem; // Tailwind: text-sm
+
+  @include media ("<=Lphone") {
+    width: 250px;
   }
-  
+
+  &.error {
+    border: 1px solid $primary; // Error state styling
+  }
+}
+
+.errorText {
+  color: $primaryOrange;
+  font-size: 0.875rem; // Tailwind: text-sm
+}

@@ -3,7 +3,8 @@ export const pageEndPoints = {
     login: '/login',
     users: '/users',
     groups: '/group',
-    addGroups: '/group/add-groups'
+    addGroups: '/group/add-groups',
+    viewGroups: '/group/view-groups',
 }
 
 export const apiEndPoints = {

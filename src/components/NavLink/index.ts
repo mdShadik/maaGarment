@@ -2,6 +2,8 @@ import { pageEndPoints } from "@/utils/constants/appConstants";
 import { MdDashboard } from "react-icons/md";
 import { HiUsers } from "react-icons/hi2";
 import { GrGroup } from "react-icons/gr";
+import { store } from "@/store";
+import { getGroupById } from "@/store/groupSlice";
 
 export const navLink = [
   {
@@ -22,9 +24,15 @@ export const navLink = [
   },
 ];
 
-export const getPageTitle = (pathname: string) => {
+export const getPageTitle = (pathname: string, params: any) => {
+    // if(pathname.includes(pageEndPoints.viewGroups) && params && params?.id){
+    //     console.log(params?.id, "nav")
+    //     store.dispatch(getGroupById(params?.id))
+    // }
+    // console.log(store.getState())
     const additionalRoutes = {
       [pageEndPoints.addGroups]: "Add Group",
+      [pageEndPoints.viewGroups]: "View Group",
     };
   
     const matchedLink = navLink.find((link) => link.pageUrl === pathname);

@@ -12,3 +12,8 @@ export const getAllGroup = (query?: any) => makeApiCall({
     endpoint: apiEndPoints.group,
     query,
 });
+
+export const getGroupbyIdApi = (id: any) => makeApiCall({
+    method: "get",
+    endpoint: `${apiEndPoints.group}/${id}`,
+});

@@ -1,4 +1,4 @@
-import { getAllGroups } from "@/apiRequest/requests/groups";
+import { getAllGroups, getGroupById as getGroupByIdApi } from "@/apiRequest/requests/groups";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
@@ -11,11 +11,17 @@ interface ArryState {
 
 export interface GroupState {
   group: ArryState;
+  groupInfo: ArryState;
 }
 
 const initialState: GroupState = {
   group: {
     info: [],
+    loading: false,
+    error: null,
+  },
+  groupInfo: {
+    info: {},
     loading: false,
     error: null,
   },
@@ -41,6 +47,28 @@ export const getAllGroup = createAsyncThunk(
     }
   );
 
+
+  export const getGroupById = createAsyncThunk(
+    "group/getId",
+    async (
+      id : any,
+      { rejectWithValue }
+    ) => {
+      try {
+        console.log(id, "slice")
+        const response = await getGroupByIdApi(id)
+  
+        if (!response) {
+          toast.error("Failed to fetch the group")
+          throw new Error("Failed to fetch group data");
+        }
+        return response
+      } catch (error: any) {
+        return rejectWithValue(error.message);
+      }
+    }
+  );
+
 export const groupSlice = createSlice({
   name: "group",
   initialState,
@@ -48,6 +76,9 @@ export const groupSlice = createSlice({
     setGroupState: (state, action: PayloadAction<Array<Record<string, any>>>) => {
         state.group.info = action.payload;
       },
+    setGroupByIdState: (state, action: PayloadAction<any>) => {
+      state.groupInfo.info = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -63,8 +94,23 @@ export const groupSlice = createSlice({
         state.group.loading = false;
         state.group.error = action.payload as string;
       });
+
+    builder
+      .addCase(getGroupById.pending, (state) => {
+        state.groupInfo.loading = true;
+        state.groupInfo.error = null;
+      })
+      .addCase(getGroupById.fulfilled, (state, action) => {
+        state.groupInfo.loading = false;
+        state.groupInfo.info = action.payload;
+      })
+      .addCase(getGroupById.rejected, (state, action) => {
+        state.groupInfo.loading = false;
+        state.groupInfo.error = action.payload as string;
+      });
   },
+  
 });
 
-export const { setGroupState } = groupSlice.actions;
+export const { setGroupState, setGroupByIdState } = groupSlice.actions;
 export const groupReducer = groupSlice.reducer;
