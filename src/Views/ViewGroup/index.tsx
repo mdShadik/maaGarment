@@ -18,6 +18,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { getGroupById } from "@/store/groupSlice";
 import { useFormik } from "formik";
+import withAuth from "@/hoc/withAuth";
 
 interface FormValues {
   name: string;
@@ -162,4 +163,5 @@ const ViewGroup = () => {
   );
 };
 
-export default ViewGroup;
+export default withAuth(ViewGroup, pageEndPoints.login)
+

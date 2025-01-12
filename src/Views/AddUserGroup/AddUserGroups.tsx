@@ -12,6 +12,7 @@ import { addGroups } from "@/apiRequest/requests/groups";
 import Input from "@/components/common/Input";
 import toast from "react-hot-toast";
 import Button from "@/components/common/Button";
+import withAuth from "@/hoc/withAuth";
 
 interface AddGroupFormValues {
   name: string;
@@ -112,4 +113,5 @@ const AddUserGroups = () => {
   );
 };
 
-export default AddUserGroups;
+export default withAuth(AddUserGroups, pageEndPoints.login)
+

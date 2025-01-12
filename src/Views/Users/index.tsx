@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { pageEndPoints } from "@/utils/constants/appConstants";
 import { getAllUser } from "@/store/userSlice";
+import withAuth from "@/hoc/withAuth";
 
 const Users = () => {
   const router = useRouter();
@@ -71,4 +72,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default withAuth(Users, pageEndPoints.login)
