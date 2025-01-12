@@ -64,7 +64,7 @@ const AddUserGroups = () => {
           <IoMdArrowRoundBack /> Back
         </Button>
       </div>
-      <h1>Add User Group</h1>
+      <h1>Add Group</h1>
       <div className={styles.mainContent}>
         <div className={`${styles.content}`}>
           <form onSubmit={formik.handleSubmit} className={styles.form}>

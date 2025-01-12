@@ -40,7 +40,7 @@ const UserGroups = () => {
                 router.push(`${pageEndPoints.addGroups}`)
               }}
             >
-              Add User Group
+              Add Group
             </button>
           </div>
           <div>

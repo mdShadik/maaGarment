@@ -12,7 +12,7 @@
 
     @include media("<=Lphone"){
       font-weight: 500;
-      font-size: 16px;
+      font-size: 24px;
     }
   }
 }
@@ -85,6 +85,8 @@
   
   @include media("<=Lphone"){
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
