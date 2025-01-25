@@ -36,19 +36,9 @@ const AddUser = () => {
     label: group.name
   }))
 
-  const statusOption = [
-    {value: "active", label: 'Active'},
-    {value: "inactive", label: 'InActive'}
-  ]
-
-  console.log({groupOptions})
-  
-
   const handleSubmit = async (values: AddUserFormValues) => {
     const selectedGroups = values.groups.map((selectedGroup: any) => {
-      const fullGroup = info?.data?.find((group: any) => group.id === selectedGroup);
-      console.log({fullGroup});
-      
+      const fullGroup = info?.data?.find((group: any) => group.id === selectedGroup);      
       return {
         id: selectedGroup,
         name: fullGroup?.name || "",
@@ -91,8 +81,6 @@ const AddUser = () => {
   useEffect(() => {
     dispatch(getAllGroupForOptions())
   }, [])
-
-  console.log(formik.errors)
 
   return (
     <div className={styles.container}>

@@ -67,7 +67,6 @@ api.interceptors.request.use(
     payload?: any;
   }) => {
     try {
-  console.log("I am here make cal",)
       let response;
   
       if (method === "get") {
