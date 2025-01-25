@@ -12,6 +12,7 @@ interface ArryState {
 export interface GroupState {
   group: ArryState;
   groupInfo: ArryState;
+  groupOptions: Array<Record<string, any>>;
 }
 
 const initialState: GroupState = {
@@ -25,6 +26,7 @@ const initialState: GroupState = {
     loading: false,
     error: null,
   },
+  groupOptions: [],
 };
 
 export const getAllGroup = createAsyncThunk(
@@ -43,6 +45,22 @@ export const getAllGroup = createAsyncThunk(
         return response
       } catch (error: any) {
         return rejectWithValue(error.message);
+      }
+    }
+  );
+
+  export const getAllGroupForOptions = createAsyncThunk(
+    "group/getOptions",
+    async () => {
+      try {
+        const response = await getAllGroups()
+        if (!response) {
+          toast.error("Failed to fetch the groups")
+          throw new Error("Failed to fetch group data");
+        }
+        return response
+      } catch (error: any) {
+        throw (error.message);
       }
     }
   );
@@ -75,6 +93,9 @@ export const groupSlice = createSlice({
     setGroupState: (state, action: PayloadAction<Array<Record<string, any>>>) => {
         state.group.info = action.payload;
       },
+    setGroupOptState: (state, action: PayloadAction<Array<Record<string, any>>>) => {
+      state.groupOptions = action.payload;
+    },
     setGroupByIdState: (state, action: PayloadAction<any>) => {
       state.groupInfo.info = action.payload;
     },
@@ -90,6 +111,19 @@ export const groupSlice = createSlice({
         state.group.info = action.payload;
       })
       .addCase(getAllGroup.rejected, (state, action) => {
+        state.group.loading = false;
+        state.group.error = action.payload as string;
+      });
+    builder
+      .addCase(getAllGroupForOptions.pending, (state) => {
+        state.group.loading = true;
+        state.group.error = null;
+      })
+      .addCase(getAllGroupForOptions.fulfilled, (state, action) => {
+        state.group.loading = false;
+        state.group.info = action.payload;
+      })
+      .addCase(getAllGroupForOptions.rejected, (state, action) => {
         state.group.loading = false;
         state.group.error = action.payload as string;
       });
@@ -111,5 +145,5 @@ export const groupSlice = createSlice({
   
 });
 
-export const { setGroupState, setGroupByIdState } = groupSlice.actions;
+export const { setGroupState, setGroupByIdState, setGroupOptState } = groupSlice.actions;
 export const groupReducer = groupSlice.reducer;

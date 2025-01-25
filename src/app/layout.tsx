@@ -9,6 +9,8 @@ import Navbar from "@/components/NavBar";
 import styles from "./RootLayout.module.scss";
 import { usePathname } from "next/navigation";
 import { pageEndPoints } from "@/utils/constants/appConstants";
+import PageLoader from "@/components/PageLoader";
+import LoadingOverlay from "@/components/common/Loading";
 
 const ReduxProvider = dynamic(() => import("@/store/redux-provider"), {
   ssr: false,
@@ -29,6 +31,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
+        <PageLoader />
+        <LoadingOverlay />
           <ToastContainer />
           <Toaster position="top-right" reverseOrder={false} />
           {!isLoginPage ? (

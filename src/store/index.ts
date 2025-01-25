@@ -5,6 +5,8 @@ import { authReducer } from "@/store/authSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { groupReducer } from "./groupSlice";
 import { userReducer } from "./userSlice";
+import { loaderReducer } from "./loaderSlice";
+import { optionReducer } from "./optionsSlice";
 
 const createNoopStorage = () => {
   return {
@@ -25,11 +27,11 @@ const storage =
     ? createWebStorage("local")
     : createNoopStorage();
 
-const authPersistConfig = {
-  key: "auth",
-  storage: storage,
-  whitelist: ["isAuthenticated, userId, token"],
-};
+  const authPersistConfig = {
+    key: "auth",
+    storage: storage,
+    whitelist: ["isAuthenticated", "userId", "token"],
+  };
 
 const persistedReducer = persistReducer(authPersistConfig, authReducer);
 
@@ -37,6 +39,8 @@ const rootReducer = combineReducers({
   auth: persistedReducer,
   group: groupReducer,
   user: userReducer,
+  loader: loaderReducer,
+  option: optionReducer,
 });
 
 export const store = configureStore({

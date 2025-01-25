@@ -6,6 +6,7 @@ export const pageEndPoints = {
     addGroups: '/group/add-groups',
     viewGroups: '/group/view-groups',
     viewUser: '/users/view-user',
+    addUsers: '/users/add-user',
 }
 
 export const apiEndPoints = {
@@ -13,6 +14,8 @@ export const apiEndPoints = {
     user: '/user',
     group: '/group',
 }
+
+export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
   

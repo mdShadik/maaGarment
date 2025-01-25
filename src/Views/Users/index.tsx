@@ -56,9 +56,9 @@ const Users = () => {
             Search
             <button
               className={`${styles["primary-btn"]}`}
-              //   onClick={() =>
-              //     handleSave(floorInfo.length > 5 ? floorInfo.slice(0, 5) : floorInfo, false)
-              //   }
+                onClick={() =>
+                  router.push(pageEndPoints.addUsers)
+                }
             >
               Add User
             </button>

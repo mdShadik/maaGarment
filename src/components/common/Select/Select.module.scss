@@ -1,0 +1,47 @@
+@import "../../../app/breakpoints/breakpoints.scss";
+@import "../../../app/styles/variable";
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.SelectControl {
+  max-width: 300px;
+  width: 300px;
+  height: 40px;
+    border: 1px solid $secondary !important;
+  outline: none !important;
+  border-radius: 8px;
+  box-shadow: 1px 4px 10px $shadow;
+  transition: border 200ms ease-in-out;
+
+  &:hover {
+    border: 1px solid $primary !important;
+  }
+
+  @include media("<=Lphone") {
+    width: 250px;
+  }
+}
+
+.custom-select__control--is-disabled {
+  background-color: $gray1;
+  border: 1px solid $gray1 !important;
+}
+
+.custom-select__menu {
+  z-index: 10;
+  border: 1px solid $primary !important;
+  box-shadow: 1px 4px 10px $shadow;
+}
+
+.error {
+  border: 1px solid $primaryOrange !important;
+}
+
+.errorText {
+  color: $primaryOrange;
+  font-size: 0.875rem; // Tailwind: text-sm
+}
