@@ -1,7 +1,7 @@
 import { pageEndPoints } from "@/utils/constants/appConstants";
 import { MdDashboard } from "react-icons/md";
 import { HiUsers } from "react-icons/hi2";
-import { GrGroup } from "react-icons/gr";
+import { GrGroup, GrUpload } from "react-icons/gr";
 import { store } from "@/store";
 import { getGroupById } from "@/store/groupSlice";
 
@@ -21,6 +21,11 @@ export const navLink = [
     name: "Group",
     pageUrl: pageEndPoints.groups,
     icon: GrGroup,
+  },
+  {
+    name: "Bulk Upload",
+    pageUrl: pageEndPoints.bulkUpload,
+    icon: GrUpload,
   },
 ];
 

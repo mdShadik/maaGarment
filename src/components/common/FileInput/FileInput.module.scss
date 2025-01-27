@@ -1,0 +1,44 @@
+@import "../../../app/breakpoints/breakpoints.scss";
+@import "../../../app/styles/variable";
+
+.fileInputContainer {
+  display: flex;
+  flex-direction: column;
+//   gap: 0.25rem; // Tailwind: gap-1
+}
+
+.label {
+  font-size: 0.875rem; // Tailwind: text-sm
+  color: $gray1;
+}
+
+.fileInput {
+  max-width: 300px;
+  width: 300px;
+  height: 40px;
+  transition: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  border: 1px solid $secondary !important;
+  box-shadow: 1px 4px 10px $shadow;
+  padding: 0.5rem;
+  outline: none !important;
+  background-color: $white;
+
+  &:hover {
+    border: 1px solid $primary !important;
+  }
+
+  @include media("<=Lphone") {
+    width: 250px;
+  }
+
+  &.error {
+    border: 1px solid $primary; // Error state styling
+  }
+}
+
+.errorText {
+  color: $primaryOrange;
+  font-size: 0.875rem; // Tailwind: text-sm
+}

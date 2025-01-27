@@ -5,7 +5,7 @@ export const addUsers = async (payload: any) => {
       const response = await addUserApi(payload);
       return response
     } catch (error: any) {
-      console.error("Error Adding User 23", error?.response?.data);
+      console.error("Error Adding User ", error?.response?.data);
       return error?.response?.data;
     }
   };

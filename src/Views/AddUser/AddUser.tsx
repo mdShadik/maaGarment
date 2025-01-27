@@ -50,10 +50,10 @@ const AddUser = () => {
   
     const response = await addUsers(payload);
     if (response?.status === 201) {
-      toast.success("Group Created Successfully");
+      toast.success("User Created Successfully");
       router.push(pageEndPoints.users);
     } else {
-      toast.error("Error Creating Group");
+      toast.error("Error Creating User");
     }
   };
 

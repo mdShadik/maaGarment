@@ -7,12 +7,14 @@ export const pageEndPoints = {
     viewGroups: '/group/view-groups',
     viewUser: '/users/view-user',
     addUsers: '/users/add-user',
+    bulkUpload: '/bulk-upload',
 }
 
 export const apiEndPoints = {
     login: '/login',
     user: '/user',
     group: '/group',
+    import: '/import',
 }
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
