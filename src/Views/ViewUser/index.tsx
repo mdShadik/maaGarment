@@ -77,7 +77,7 @@ const ViewUser = () => {
         <Button
           className={styles.backBtn}
           onClick={() => {
-            router.push(pageEndPoints.groups);
+            router.push(pageEndPoints.users);
           }}
           variant="secondary"
         >
