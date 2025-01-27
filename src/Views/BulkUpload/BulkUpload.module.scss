@@ -124,3 +124,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.statusPending,
+.statusActive {
+  background: $primaryOrange;
+  padding: 5px;
+  color: $gray1;
+  text-transform: capitalize;
+  border-radius: 5px;
+  box-shadow: 1px 3px 3px $shadow;
+}
+
+.statusActive {
+  background: $success;
+}
+
+.statusFailed {
+  background: $danger2;
+}

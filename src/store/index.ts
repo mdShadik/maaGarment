@@ -7,6 +7,7 @@ import { groupReducer } from "./groupSlice";
 import { userReducer } from "./userSlice";
 import { loaderReducer } from "./loaderSlice";
 import { optionReducer } from "./optionsSlice";
+import { importReducer } from "./bulkUpload";
 
 const createNoopStorage = () => {
   return {
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   loader: loaderReducer,
   option: optionReducer,
+  bulkUpload: importReducer,
 });
 
 export const store = configureStore({

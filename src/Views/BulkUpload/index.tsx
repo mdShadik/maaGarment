@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./BulkUpload.module.scss";
 import { CSpinner } from "@coreui/react";
 import * as Yup from "yup";
@@ -11,10 +11,12 @@ import toast from "react-hot-toast";
 import Button from "@/components/common/Button";
 import withAuth from "@/hoc/withAuth";
 import SelectComponent from "@/components/common/Select";
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { addUsers } from "@/apiRequest/requests/users";
 import FileInput from "@/components/common/FileInput";
 import { importUpload } from "@/apiRequest/requests/import";
+import { getImportUpload } from "@/store/bulkUpload";
+import Table from "@/components/common/Table";
 
 const fileTypeOpt = [
   { value: "USER", label: "User" },
@@ -29,6 +31,8 @@ interface BulkUploadFormValues {
 const BulkUpload = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { import: bulkUpload } = useAppSelector((state) => state.bulkUpload);
+  const { info, loading, error } = bulkUpload;
 
   const handleSubmit = async (values: BulkUploadFormValues) => {
     const payload = { ...values };
@@ -36,7 +40,7 @@ const BulkUpload = () => {
     const response = await importUpload(payload);
     if (response?.status === 201) {
       toast.success("File Uploaded Successfully");
-      router.push(pageEndPoints.users);
+      dispatch(getImportUpload({}))
     } else {
       toast.error("Error Uploading Files");
     }
@@ -59,7 +63,36 @@ const BulkUpload = () => {
     onSubmit: handleSubmit,
   });
 
-  console.log(formik.values)
+  const columns = [
+    {
+      key: "fileType",
+      label: "Type",
+    },
+    { key: "filePath", label: "File Path" },
+    { key: "description", label: "Description" },
+    {
+      key: "status",
+      label: "Status",
+      render: (row: any) => (
+        <span
+        className={`${
+          row.status === "PENDING"
+            ? styles.statusPending
+            : row.status === "FAIL" 
+            ? styles.statusFailed
+            : styles.statusActive
+        }`}
+        >
+          {row.status}
+        </span>
+      ),
+    },
+  ];
+
+
+  useEffect(() => {
+    dispatch(getImportUpload({}))
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -109,6 +142,9 @@ const BulkUpload = () => {
               )}
             </button>
           </form>
+          <div>
+            <Table columns={columns} data={info?.data} loading={loading} />
+          </div>
         </div>
       </div>
     </div>
