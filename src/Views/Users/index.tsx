@@ -64,7 +64,7 @@ const Users = () => {
             </button>
           </div>
           <div>
-            <Table columns={columns} data={info?.data} loading={loading} />
+            <Table columns={columns} data={info?.data} loading={loading} onRowClick={handleRowClick} />
           </div>
         </div>
       </div>
