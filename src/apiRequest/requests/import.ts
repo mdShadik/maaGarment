@@ -1,8 +1,12 @@
 import { getImportUploadApi, importUploadApi } from "../apiMethods/import";
 
 export const importUpload = async (payload: any) => {
+
+  const formData = new FormData();
+  formData.append("fileType", payload.fileType);
+  formData.append("file", payload.file);
   try {
-    const response = await importUploadApi(payload);
+    const response = await importUploadApi(formData);
     return response;
   } catch (error: any) {
     console.error("Error Uploading File", error?.response?.data);

@@ -60,19 +60,26 @@ api.interceptors.request.use(
     endpoint,
     query = {},
     payload = {},
+    headers = {}, 
   }: {
     method: "get" | "post" | "put" | "delete";
     endpoint: string;
     query?: any;
     payload?: any;
+    headers?: Record<string, string>;
   }) => {
     try {
       let response;
   
+      const config: any = {
+        params: query,
+        headers: { ...api.defaults.headers, ...headers },
+      };
+  
       if (method === "get") {
-        response = await api.get(endpoint, { params: query });
-      } else if (method === "post" || method === "put" || method === "delete") {
-        response = await api[method](endpoint, payload);
+        response = await api.get(endpoint, config);
+      } else {
+        response = await api[method](endpoint, payload, config);
       }
   
       return response;
@@ -81,4 +88,5 @@ api.interceptors.request.use(
       return error?.response?.data;
     }
   };
+  
 
